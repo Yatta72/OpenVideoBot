@@ -485,6 +485,8 @@ async def parse_command(message):
         await message.reply(f"Please wait {ceil(is_timeout)} seconds to use this command again.")
         return
 
+           await with message.channel.typing():
+
     match final_command_name:
         case "help":
             if 'ovb' in original_msg:

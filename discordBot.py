@@ -485,27 +485,27 @@ async def parse_command(message):
         await message.reply(f"Please wait {ceil(is_timeout)} seconds to use this command again.")
         return
 
-    async with message.channel.typing():
-    match final_command_name:
-        case "help":
-            if 'ovb' in original_msg:
-                await message.reply("VideoEditBot Command Documentation: https://github.com/GanerCodes/videoEditBot/blob/master/COMMANDS.md")
-        case "discord":
-            if 'ovb' in original_msg:
-                await message.reply("Join our Discord server: https://discord.gg/yCVkJaDc37")
-        case "sysinfo":
-            if 'ovb' in original_msg:
-                XXB = len(bot.guilds) / 100 * 100
-                XXA = f"**{len(bot.guilds)}/100** {XXB:.1f}%"
-                XYA = int(get_next_milestone(command_count))
-                XYB = int(XYA) - int(command_count)
-                embed = discord.Embed(title="OpenVideoBot System Info", color=discord.Color.purple())
-                embed.add_field(name="Bot Uptime", value=get_uptime(), inline=False)
-                embed.add_field(name="Total Files Edited", value=f"**{command_count}** edited so far - {XYB} until {XYA}", inline=False)
-                embed.add_field(name="Servers", value=XXA, inline=False)
-                await message.reply(embed=embed)     
-        case "concat":
-            Task(
+    async with message.channel.typing():
+        match final_command_name:
+            case "help":
+                if 'ovb' in original_msg:
+                    await message.reply("VideoEditBot Command Documentation: https://github.com/GanerCodes/videoEditBot/blob/master/COMMANDS.md")
+            case "discord":
+                if 'ovb' in original_msg:
+                    await message.reply("Join our Discord server: https://discord.gg/yCVkJaDc37")
+            case "sysinfo":
+                if 'ovb' in original_msg:
+                    XXB = len(bot.guilds) / 100 * 100
+                    XXA = f"**{len(bot.guilds)}/100** {XXB:.1f}%"
+                    XYA = int(get_next_milestone(command_count))
+                    XYB = int(XYA) - int(command_count)
+                    embed = discord.Embed(title="OpenVideoBot System Info", color=discord.Color.purple())
+                    embed.add_field(name="Bot Uptime", value=get_uptime(), inline=False)
+                    embed.add_field(name="Total Files Edited", value=f"**{command_count}** edited so far - {XYB} until {XYA}", inline=False)
+                    embed.add_field(name="Servers", value=XXA, inline=False)
+                    await message.reply(embed=embed)
+            case "concat":
+                 Task(
                 Action(prepare_concat, message, args,
                     name = "Concat Command Prep",
                     check = lambda x: x),
@@ -526,16 +526,16 @@ async def parse_command(message):
                     name = "Post Concat"),
                 async_handler = async_runner
             ).run_threaded()
-        case "download":
-            Task(
+            case "download":
+                 Task(
                 Action(download,
                     download_filename := f"{generate_uuid_folder_from_msg(message.id)}.mp4",
                     args, name="yt-dlp download", file_limit=FILE_SIZE_LIMIT_MB),
                 Action(process_result_post, message, swap_arg("result"), download_filename,
                     remainder, name="Post Download"),).run_threaded()
-        case "bv":
-            print(f"{message.author} summoned OpenVideoBot")
-            Task(
+            case "bv":
+                 print(f"{message.author} summoned OpenVideoBot")
+                 Task(
                 Action(prepare_VideoEdit, message,
                     name = "VEB Command Prep",
                     check = lambda x: x,
@@ -597,7 +597,7 @@ async def on_message(msg):
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 async def sysinfo(message: discord.Interaction):
     XXB = len(bot.guilds) / 100 * 100
-    XXA = f"{message.author}"
+    XXA = f"{message.user}"
     XYA = int(get_next_milestone(command_count))
     XYB = int(XYA) - int(command_count)
     embed = discord.Embed(title="OpenVideoBot System Info", color=discord.Color.purple())

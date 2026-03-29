@@ -85,7 +85,7 @@ intents = discord.Intents.all()
 intents.typing = False
 intents.presences = False
 # intents.members = False
-discord_status = discord.Activity(type = discord.ActivityType.playing, name="Subscribe to @BTLE64 on YouTube")
+discord_status = discord.Activity(type = discord.ActivityType.playing, name="Subscribe to @TheRedYTPer on YouTube")
 bot = discord.AutoShardedClient(status=discord_status, intents=intents, chunk_guilds_at_startup=False)
 
 COMMAND_COUNT_FILE = "CommandCount.dat"
@@ -374,7 +374,7 @@ def process_result_post(msg, res, filename = "video.mp4", prefix = None, random_
         colefta = int(next_milestone) - int(command_count)
         if is_milestone(command_count):
             print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉 WOWIE ZOWIE! NEW ACHIEVEMENT!! 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
-            content = f"# YOU JUST EDITED THE {command_count}th VIDEO! :tada:\nPlease send proof to *beebo_robot64* **immediately** and join the bTLE64 server for the celebration!\n**See you there!**\n-# **#{command_count}**" if prefix else f"# YOU JUST EDITED THE {command_count}th VIDEO! :tada:\nPlease send proof to *beebo_robot64* **immediately** and join the BTLE64 server for the celebration!\n**See you there!**\n-# **#{command_count}**" 
+            content = f"# YOU JUST EDITED THE {command_count}th VIDEO! :tada:\nPlease send proof to *theredytper* **immediately** and join the OVB server for the celebration!\n**See you there!**\n-# **#{command_count}**" if prefix else f"# YOU JUST EDITED THE {command_count}th VIDEO! :tada:\nPlease send proof to *theredytper* **immediately** and join the OVB server for the celebration!\n**See you there!**\n-# **#{command_count}**" 
         else:
             content = f"{text.strip()}\n{prefix.strip()}\n-# **#{command_count}**\n-# {colefta} left until {next_milestone}" if prefix else f"{text.strip()}\n-# **#{command_count}**\n-# {colefta} left until {next_milestone}" 
         messageQue.append(qued_msg(context = msg, filepath = res.filename, filename = hash_filename(filename), message = content, reply = True))
@@ -402,7 +402,7 @@ async def process_result_post_SlashCmd(msg, res, filename = "video.mp4", prefix 
             colefta = int(next_milestone) - int(command_count)
             if is_milestone(command_count):
                 print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉 WOWIE ZOWIE! NEW ACHIEVEMENT!! 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉")
-                content = f"# YOU JUST EDITED THE {command_count}th VIDEO! :tada:\nPlease send proof to *beebo_robot64* **immediately** and join the BTLE64 server for the celebration!\n**See you there!**\n-# **#{command_count}**" if prefix else f"# YOU JUST EDITED THE {command_count}th VIDEO! :tada:\nPlease send proof to *beebo_robot64* **immediately** and join the BTLE64 server for the celebration!\n**See you there!**\n-# **#{command_count}**" 
+                content = f"# YOU JUST EDITED THE {command_count}th VIDEO! :tada:\nPlease send proof to *theredytper* **immediately** and join the OVB server for the celebration!\n**See you there!**\n-# **#{command_count}**" if prefix else f"# YOU JUST EDITED THE {command_count}th VIDEO! :tada:\nPlease send proof to *theredytper* **immediately** and join the OVB server for the celebration!\n**See you there!**\n-# **#{command_count}**" 
                 await msg.followup.send(content, files=[discord.File(res.filename)], ephemeral=False)
             else:
                 content = f"{text.strip()}\n`{prefix.strip()}`\n-# **#{command_count}**\n-# {colefta} left until {next_milestone}" if prefix else f"{text.strip()}\n-# **#{command_count}**\n-# {colefta} left until {next_milestone}" 

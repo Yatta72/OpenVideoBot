@@ -596,16 +596,16 @@ async def on_message(msg):
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 async def sysinfo(message: discord.Interaction):
     XXB = len(bot.guilds) / 100 * 100
-    XXA = f"**{len(bot.guilds)}/100** {XXB:.1f}%"
+    XXA = f"{message.author}"
     XYA = int(get_next_milestone(command_count))
     XYB = int(XYA) - int(command_count)
-    embed = discord.Embed(title="BeeboVideo System Info", color=discord.Color.blue())
+    embed = discord.Embed(title="OpenVideoBot System Info", color=discord.Color.purple())
     embed.add_field(name="Bot Uptime", value=get_uptime(), inline=False)
-    embed.add_field(name="Total Files Edited", value=f"**{command_count}** edited so far - {XYB} until {XYA}", inline=False)
-    embed.add_field(name="Servers", value=XXA, inline=False)
+    embed.add_field(name="Total Files Edited", value=f"{command_count}/**{XYA}**", inline=False)
+    embed.add_field(name="Last Person", value=XXA, inline=False)
     await message.response.send_message(embed=embed)  
 
-@tree.command(name="download", description="Tired of using BEB's text commands? Try this out!")
+@tree.command(name="download", description="Tired of using OVB's text commands? Try this out!")
 @app_commands.allowed_installs(guilds=True, users=True)
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 async def download(message: discord.Interaction, args: str):
@@ -663,7 +663,7 @@ async def download(message: discord.Interaction, args: str):
                 persist_result_values = True
                 ).run_threaded()
 
-@tree.command(name="beb", description="Tired of using BeeboVideos's text commands? Try this out!")
+@tree.command(name="ovb", description="Tired of using OVB's text commands? Try this out!")
 @app_commands.allowed_installs(guilds=True, users=True)
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 async def ovb(message: discord.Interaction, args: str, file: discord.Attachment):
